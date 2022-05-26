@@ -1,4 +1,4 @@
-package spring;
+package com.learn.spring;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,10 +12,9 @@ public class Appintalizer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		// TODO Auto-generated method stub
+
 		AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
 		root.register(Appconfig.class);
-		root.register(resolverconfig.class);
 		ServletRegistration.Dynamic context =  servletContext.addServlet("myDispatcherServlet",new DispatcherServlet(root));
 	    context.addMapping("/");
 	    context.setLoadOnStartup(1);
